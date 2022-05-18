@@ -64,12 +64,12 @@ def get_t_start(start):
 @app.route('/api/v1.0/<start>/<stop>')
 def get_t_start_stop(start,stop):
     session = Session(engine)
-    queryresult = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
+    temp_queryresult = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
         filter(Measurement.date >= start).filter(Measurement.date <= stop).all()
     session.close()
 
     tobsall = []
-    for min,avg,max in queryresult:
+    for min,avg,max in temp_queryresult:
         tobs_dict = {}
         tobs_dict["Min"] = min
         tobs_dict["Average"] = avg
@@ -81,8 +81,8 @@ def get_t_start_stop(start,stop):
 @app.route('/api/v1.0/tobs')
 def tobs():
     session = Session(engine)
-    lateststr = session.query(Measurement.date).order_by(Measurement.date.desc()).first()[0]
-    latestdate = dt.datetime.strptime(lateststr, '%Y-%m-%d')
+    latest_dt_str = session.query(Measurement.date).order_by(Measurement.date.desc()).first()[0]
+    latestdate = dt.datetime.strptime(latest_dt_str, '%Y-%m-%d')
     querydate = dt.date(latestdate.year -1, latestdate.month, latestdate.day)
     sel = [Measurement.date,Measurement.tobs]
     queryresult = session.query(*sel).filter(Measurement.date >= querydate).all()
