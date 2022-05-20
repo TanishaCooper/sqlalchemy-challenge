@@ -114,7 +114,7 @@ Let's best understand the temperature during our trip dates (08/01 - 08/07). We 
 
 **The trip predicted temperature normals (Min, Avg, and Max) by date were the following:
 
-![Trip Dates Normals](Images/dates_normals_df.png)
+![Trip Dates Normals](Images/trip_dates_normals_df.png)
 
 ***The trip dates normals determined that, over the course of the time we would be in Hawaii, **the temperature would be ideal to visit**. The temperature average over our trip dates is near trip average over one year of data.***
 
