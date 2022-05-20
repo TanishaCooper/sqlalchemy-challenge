@@ -80,15 +80,43 @@ Short answer: **Yes!**
     - Used average temp as the bar height (***y*** value)
     - Used the peak-to-peak (TMax-TMin) value as the ***y*** error bar (YERR)
 
-***The minimum, average, and mimimum temperature over the trips one year dates were as followed: **58.0 F, 74.7 F, and 87.0 F**.*** ***(YERR = 29)***
+***The minimum, average, and mimimum temperature over the trips one year dates were as followed: **58.0 F, 74.7 F, and 87.0 F**.*** ***(YERR = 29 F difference)***
+
+**74.7 F or higher is the ideal temperature we should aim for our trip.**
 
 ![Trip Avg Temp](Images/trip_avg_temp.png)
 
-### Daily Temperature Normals
-Calculated the daily normals for the duration of the trip. Normals are the averages for the minimum, average, and maximum temperatures.
+## Daily Rainfall Average 
+We have the ideal temperature. Now, we sought to review daily rain aveerages per station over a year of data. The latter helped to determine which station we should visit during our trip dates. 
 
 ## Challenge Process and Analysis
+### Average Rainfall Over One Year (Trip Dates)
+- Created **sel_query** to pull back table columns with data across tip dates over one year
+- Captured query to add sum precipitation and sorted 
+- Created DataFrame for total rainfalls
 
+![Station Avg Rainfall](Images/stations_rainfall.png)
+
+***The daily average rainfall noted that it's best that we visit **station: USC00517948** with **lowest preciptiation total of 4.77** during our trip dates of August 1-7.***
+### Daily Temperature Normals
+Let's best understand the temperature during our trip dates (08/01 - 08/07). We calculated the daily normals for the duration of the trip dates (08-01 and 08-07). Normals are the averages for the minimum, average, and maximum temperatures.
+
+## Challenge Process and Analysis
+- Set start and end date of the trip
+- Used the date to create a range of dates
+- Stripped off the year, and save a list of strings in the format %m-%d.
+- Used the **daily_normals** function to calculate the normals for each date string, and append the results to a list called "normals"
+-Loaded the list of daily normals into a Panda DataFrame, and set the index equal to the date
+- Used Pandas to area plot(**staked=False**) for the daily normals, as shown in the following image:
+- Closed out engine session
+
+![Trip Predicted Temperature (Min, Avg, and Max)](Images/trip_predicted_temp.png)
+
+**The trip predicted temperature normals (Min, Avg, and Max) by date were the following:
+
+![Trip Dates Normals](Images/dates_normals_df.png)
+
+***The trip dates normals determined that, over the course of the time we would be in Hawaii, **the temperature would be ideal to visit**. The temperature average over our trip dates is near trip average over one year of data.***
 
 
 
